@@ -47,9 +47,17 @@
     function drop(even) {
         even.preventDefault();
         const fetchData = even.dataTransfer.getData("text");
-       let classArr=fetchData.split(' ');
-	   console.log(document.getElementsByClassName(classArr[1])[0])
-        even.target.appendChild(document.getElementsByClassName(classArr[1])[0]);
+		 let dragelem = document.getElementsByClassName(fetchData)[0];
+     //swapping innerText
+		let temptext=event.target.innerText;
+    console.log(temptext,dragelem);
+  event.target.innerText=dragelem.innerText;
+  dragelem.innerText=temptext;
+  //swapping classNames
+  let tempcurrclass=even.target.className;
+  event.target.className=dragelem.className;
+  dragelem.className=tempcurrclass;
+ 
     }
 </script>
 
